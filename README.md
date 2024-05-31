@@ -25,9 +25,14 @@ Add Intro here...
 ## 3 Architectural Design
 Design elements here...
 
-## 3.1 Class Diagram
+## 3.1 Use Case Diagram
+<p align="center">
+    <img src="use_case.png" title="USE CASE DIAGRAM">
+</p>
+
+## 3.2 Class Diagram
 Class Diagram here...
 
-## 3.2 Sequence Diagram
+## 3.3 Sequence Diagram
 Sequence Diagram here...
 
