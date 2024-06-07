@@ -1,0 +1,41 @@
+# Dependency directories
+node_modules/
+dist/
+build/
+
+# Environment variables
+.env*
+
+# IDE/Editor files
+.vscode/
+.idea/
+*.sublime-*
+
+# Logs and temporary files
+*.log
+*.bak
+*.tmp
+
+# Compiled code and binaries
+*.exe
+*.dll
+*.so
+*.dylib
+
+# Package management files
+yarn.lock
+package-lock.json
+
+# Local environment configurations
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# Sensitive information
+credentials/
+secrets/
+
+# Miscellaneous
+.DS_Store
+Thumbs.db
