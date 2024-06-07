@@ -10,7 +10,7 @@ app.use(express.json());
 app.use(cors());
 
 
-mongoose.connect("mongodb+srv://mmjp17:4kns0Jc1gsoV8DWt@cookingrecipeapp.vruiasr.mongodb.net/");
+mongoose.connect("mongodb+srv://mmjp17:<password>@cookingrecipeapp.vruiasr.mongodb.net/");
 app.listen(3001, () => {
     console.log("Server is running now......");
 });
@@ -39,4 +39,3 @@ app.post("/getOnlineRecommendations", async (req, res) => {
     }
   });
     
-// mongodb+srv://mmjp17:4kns0Jc1gsoV8DWt@cookingrecipeapp.vruiasr.mongodb.net/
