@@ -17,33 +17,30 @@
   padding: 20px;
   max-width: 1200px;
   margin: auto; 
-  height: 130px;
+  align-items: stretch;
+  
 }
 
 .form-input-container {
   display: flex;
 }
 
+.form-left-container,
 .form-right-container {
-  padding: 20px; 
-  max-width: 300px;
+  padding: 20px;
   border: 1px solid black;
-  border-radius: 10px; 
-  background-color: #f9f9f9; 
-  margin: auto; 
-  flex-grow: 1;
-  height: 100% ;
+  border-radius: 10px;
+  background-color: #f9f9f9;
+  flex-grow: 1; 
 }
 
 .form-left-container {
   max-width: 800px;
-  padding: 20px; 
-  border: 1px solid black;
-  border-radius: 10px; 
-  background-color: #f9f9f9; 
-  flex-grow: 1; 
-  margin-right: 20px; 
-  height: 100%;
+  margin-right: 20px;
+}
+
+.form-right-container {
+  max-width: 300px;
 }
 
 .form-button-container {
@@ -103,4 +100,12 @@
   background-color: white;
   border: 1px solid #ccc;
   border-radius: 5px;
+}
+
+.recomend-container {
+  padding: 20px; 
+  border: 1px solid black;
+  border-radius: 10px; 
+  background-color: #f9f9f9; 
+  
 }
