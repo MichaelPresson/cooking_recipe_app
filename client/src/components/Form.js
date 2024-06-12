@@ -59,8 +59,8 @@ function Form({ setRecipes }) {
               placeholder="Add a grocery item"
             />
             <div className='form-button-container'>
-              <button className="form-button" type="button" onClick={search}>
-                Search
+              <button className="form-button" type="button" onClick={ addToList }>
+                Add Item
               </button>
               <button className="form-button" type="button" onClick={handleClear}>
                 Clear
@@ -70,7 +70,13 @@ function Form({ setRecipes }) {
         </form>
       </div>
       <div className='form-right-container'>
-        Type an item you have and press enter to add to list. Press search and we will find a matching recipe!
+        <div>
+          Type an item you have and press enter to add to list. 
+          Press search and we will find a matching recipe!
+        </div>
+        <button className="form-button-search" type="button" onClick={search}>
+          Search
+        </button>
       </div>
     </div>
   );
