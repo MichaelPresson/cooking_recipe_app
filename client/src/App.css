@@ -124,3 +124,39 @@
   max-width: 1200px;
   margin: auto; 
 }
+
+.recipe {
+  padding: 10px;
+  display: flex;
+  justify-content: space-between;
+}
+.recomend-save-button {
+  margin-right: 30px;
+}
+
+
+.recomend-save-button {
+  padding: 10px 20px;
+  font-size: 16px;
+  font-weight: bold;
+  border-radius: 50%; 
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-decoration: none;
+  border: none;
+  width: 60px; 
+  height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.recomend-save-button:hover {
+  box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15);
+  transform: translateY(-2px);
+}
+
+.recomend-save-button:active {
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  transform: translateY(0);
+}

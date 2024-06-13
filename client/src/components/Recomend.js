@@ -42,16 +42,22 @@ function Recomend({ recipes }) {
         <div className='recomend-container'>
             {recipes.map(recipe => (
                 <div key={recipe.id} className='recipe'>
+                    <div className='recomend-left'>
                     <h3>{recipe.title}</h3>
-                    {recipeUrls[recipe.id] && (
-                        <div>
-                            <a href={recipeUrls[recipe.id]} target="_blank" rel="noopener noreferrer">
-                                {recipeUrls[recipe.id]}
-                            </a>
-                        </div>
-                    )}
+                        {recipeUrls[recipe.id] && (
+                            <div>
+                                <a href={recipeUrls[recipe.id]} target="_blank" rel="noopener noreferrer">
+                                    {recipeUrls[recipe.id]}
+                                </a>
+                            </div>
+                        )}
+                    </div>
+                    <button className='recomend-save-button'>
+                        <img src="/favorite-svgrepo-com.svg" alt='SVG-Image'></img>
+                    </button>
                 </div>
             ))}
+
         </div>
     );
 }
