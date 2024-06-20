@@ -1,23 +1,21 @@
 const axios = require('axios');
-const dotenv = require('dotenv');
 
-dotenv.config();
+const BASE_URL = 'https://api.spoonacular.com/recipes';
 
-const API_KEY = process.env.SPOONACULAR_API_KEY;
-const BASE_URL = 'https://api.spoonacular.com/recipes/findByIngredients';
 
-const getRecipesByIngredients = async (ingredients) => {
-  const ingredientNames = ingredients.map(ingredient => ingredient.name).join(',');
-  
+const getRecipesByIngredients = async (ingredients, apiKey) => {
+  let ingStr = ingredients.join(',');
+
   try {
-    const response = await axios.get(BASE_URL, {
+    const response = await axios.get(`${BASE_URL}/findByIngredients`, {
       params: {
-        ingredients: ingredientNames,
-        number: 10,
-        apiKey: API_KEY,
-      },
+        ingredients: ingStr,
+        number: 5, 
+        ranking: 1,
+        ignorePantry: false, 
+        apiKey: apiKey,
+      }
     });
-
     return response.data;
   } catch (error) {
     console.error('Error fetching recipes:', error);
@@ -25,4 +23,22 @@ const getRecipesByIngredients = async (ingredients) => {
   }
 };
 
-module.exports = getRecipesByIngredients;
+const getInstructions = async (id, apiKey) => {
+  try {
+    const response = await axios.get(`${BASE_URL}/${id}/information`, {
+      params: {
+        includeNutrition: false,
+        apiKey: apiKey,
+      }
+    });
+    return response.data;
+  } catch (error) {
+    console.error('Error getting recipe instructions:', error);
+    throw error;
+  }
+};
+
+module.exports = {
+  getRecipesByIngredients,
+  getInstructions
+};
