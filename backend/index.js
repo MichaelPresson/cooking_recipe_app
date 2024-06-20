@@ -12,7 +12,14 @@ console.log(apiKey)
 app.use(express.json());
 app.use(cors());
 
-mongoose.connect("mongodb+srv://mmjp17:4kns0Jc1gsoV8DWt@cookingrecipeapp.vruiasr.mongodb.net/", { useNewUrlParser: true, useUnifiedTopology: true })
+const username = process.env.MONGODB_USERNAME;
+const password = process.env.MONGODB_PASSWORD;
+const cluster = process.env.MONGODB_CLUSTER;
+const dbName = process.env.MONGODB_DB;
+
+const connectionString = `mongodb+srv://${username}:${password}@${cluster}.mongodb.net/`
+
+mongoose.connect(connectionString, { useNewUrlParser: true, useUnifiedTopology: true })
     .then(() => console.log('MongoDB connected'))
     .catch(err => console.error('MongoDB connection error:', err));
 
