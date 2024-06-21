@@ -17,7 +17,7 @@ const cluster = process.env.MONGODB_CLUSTER;
 const dbName = process.env.MONGODB_DB;
 
 // MongoDB connection string
-const connectionString = `mongodb+srv://${username}:${password}@${cluster}.mongodb.net/`
+const connectionString = `mongodb+srv://passinaultm:Redroses21$@cluster0.mutzcxw.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0`
 
 // Connect to MongoDB database
 mongoose.connect(connectionString, { useNewUrlParser: true, useUnifiedTopology: true })
