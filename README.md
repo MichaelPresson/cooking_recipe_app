@@ -37,7 +37,5 @@ Class Diagram here...
 Sequence Diagram here...
 
 ## Demo
-<video>
-    <iframe src="https://drive.google.com/file/d/1Xy14rUIoqP_aWw97gUhOVttsr91WT2d0/preview" width="640" height="480" allow="autoplay"></iframe>>
-</video>
+<iframe src="https://drive.google.com/file/d/1Xy14rUIoqP_aWw97gUhOVttsr91WT2d0/preview" width="640" height="480" allow="autoplay"></iframe>>
 
