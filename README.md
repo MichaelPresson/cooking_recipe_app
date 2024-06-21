@@ -36,3 +36,8 @@ Class Diagram here...
 ## 3.3 Sequence Diagram
 Sequence Diagram here...
 
+## Demo
+<p alight="center">
+    <img src="demo_gif.gif" title="DEMO"
+</p>
+
