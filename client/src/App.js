@@ -12,7 +12,7 @@ function App() {
   return (
   
       <div className="App">
-        <Header title="Grocery_List_App" />
+        <Header title="CodedCuisine: An Ingredient-Based Recipe Finder" />
       
          
             <div>
