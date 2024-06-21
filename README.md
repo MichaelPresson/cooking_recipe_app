@@ -34,7 +34,9 @@ Design elements here...
 Class Diagram here...
 
 ## 3.3 Sequence Diagram
-Sequence Diagram here...
+<p align="center">
+    <img src="sequence.png" title="SEQUENCE DIAGRAM">
+</p>
 
 ## Demo
 <p>
