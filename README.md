@@ -39,7 +39,7 @@ Sequence Diagram here...
 ## Demo
 <p alight="center">
     <a href="https://drive.google.com/file/d/1Xy14rUIoqP_aWw97gUhOVttsr91WT2d0/view?usp=sharing" target="_blank">Click here for full Demonstration.
-    <img src="demo_gif.gif" title="DEMO" width="500" height="300">
+    <img src="demo_gif.gif" title="DEMO" width="1000" height="600">
     </a>
 </p>
 
