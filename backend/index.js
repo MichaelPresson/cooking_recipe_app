@@ -3,6 +3,7 @@ const app = express();
 require("dotenv").config();
 const { getRecipesByIngredients, getInstructions } = require('./utils/recipeAPI');
 const IngredientsModel = require('./models/ingredients');
+const Recipe = require('./models/recipe')
 const cors = require("cors");
 const apiKey = process.env.API_KEY;  // Fetches API Key from environment variables
 const mongoose = require("mongoose");
@@ -14,10 +15,9 @@ app.use(cors());  // Middleware to enable CORS
 const username = process.env.MONGODB_USERNAME;
 const password = process.env.MONGODB_PASSWORD;
 const cluster = process.env.MONGODB_CLUSTER;
-const dbName = process.env.MONGODB_DB;
 
 // MongoDB connection string
-const connectionString = `mongodb+srv://passinaultm:Redroses21$@cluster0.mutzcxw.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0`
+const connectionString = `mongodb+srv://${username}:${password}@${cluster}.mutzcxw.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0`
 
 // Connect to MongoDB database
 mongoose.connect(connectionString, { useNewUrlParser: true, useUnifiedTopology: true })
@@ -74,5 +74,34 @@ app.post("/addIngredients", async (req, res) => {
     } catch (error) {
         console.error('Error adding ingredient:', error);
         res.status(500).json({ message: error.message });  // Sends error message as JSON response with status code 500
+    }
+});
+
+// POST endpoint to add ingredients to database
+app.post('/addRecipe', async (req, res) => {
+    const { title, header, url } = req.body;
+  
+    try {
+      // Create a new Recipe document
+      const newRecipe = new Recipe({ title, header, url });
+      // Save the recipe to MongoDB
+      await newRecipe.save();
+      // Send the saved recipe back as JSON response
+      res.json(newRecipe);
+    } catch (error) {
+      console.error('Error adding recipe:', error);
+      res.status(500).json({ message: error.message });
+    }
+});
+
+//Get endpoint to retrieve saved recipes
+app.get('/getSavedRecipes', async (req, res) => {
+    try {
+        const recipes = await Recipe.find(); // Fetch all recipes from MongoDB
+        console.log(recipes)
+        res.json(recipes); // Send fetched recipes as JSON response
+    } catch (error) {
+        console.error('Error fetching saved recipes:', error);
+        res.status(500).json({ message: 'Failed to fetch saved recipes' });
     }
 });

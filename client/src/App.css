@@ -126,6 +126,7 @@
 }
 
 .recipe {
+  border: solid 1px black;
   padding: 10px;
   display: flex;
   justify-content: space-between;
