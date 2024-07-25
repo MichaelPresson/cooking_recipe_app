@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 
-export default function SavedRecipes() {
+export default function SavedRecipes({ user }) {
     const [recipes, setRecipes] = useState([]);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
@@ -9,7 +9,8 @@ export default function SavedRecipes() {
     useEffect(() => {
         const fetchRecipes = async () => {
             try {
-                const response = await axios.get('http://localhost:3001/getSavedRecipes');
+                
+                const response = await axios.get(`http://localhost:3001/getSavedRecipes?savedBy=${user}`)
                 setRecipes(response.data);
                 setLoading(false);
             } catch (error) {
@@ -20,7 +21,7 @@ export default function SavedRecipes() {
         };
 
         fetchRecipes();
-    }, []);
+    }, [user]);
 
     if (loading) {
         return <div>Loading...</div>;

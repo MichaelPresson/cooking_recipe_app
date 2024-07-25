@@ -1,11 +1,11 @@
 import SavedRecipes from "../components/SavedRecipes"
-import Header from "../components/Header"
 
-export default function Saved() {
+
+
+export default function Saved({ user }) {
     return (
         <div>
-            <Header title='Grocer_List_App' />
-            <SavedRecipes/>
+            <SavedRecipes user={ user }/>
         </div>
     )
 }

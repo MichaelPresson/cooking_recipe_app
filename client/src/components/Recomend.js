@@ -1,12 +1,13 @@
 import React, { useState, useEffect } from 'react';
 
-async function save(title, image, url) {
+async function save(savedBy, title, image, url) {
   const response = await fetch('http://localhost:3001/addRecipe', {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
     },
     body: JSON.stringify({
+      savedBy,
       title,
       image,
       url,
@@ -37,7 +38,7 @@ const logUrl = async (id) => {
   }
 };
 
-function Recomend({ recipes }) {
+function Recomend({ recipes, user}) {
   const [recipeUrls, setRecipeUrls] = useState({});
 
   useEffect(() => {
@@ -61,12 +62,12 @@ function Recomend({ recipes }) {
     }
   }, [recipes]);
 
-  const handleSave = async (recipe) => {
+  const handleSave = async (recipe, savedBy) => {
     try {
       const { title, image } = recipe;
       const url = recipeUrls[recipe.id];
       if (url) {
-        const result = await save(title, image, url);
+        const result = await save(savedBy, title, image, url);
         console.log('Recipe saved:', result);
       } else {
         console.error('No URL found for recipe:', recipe);
@@ -94,7 +95,7 @@ function Recomend({ recipes }) {
                 </a>
               </div>
             )}
-            <button onClick={() => handleSave(recipe)}>save</button>
+            <button onClick={() => handleSave(recipe, user)}>save</button>
           </div>
         ))
       ) : (
