@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { useNavigate, Link} from 'react-router-dom'
 import axios from 'axios';
+import '../styles/Login.css'
 
 export default function Login({ setLogged, setUser }) {
     const [username, setUsername] = useState('');
@@ -22,15 +23,18 @@ export default function Login({ setLogged, setUser }) {
     };
 
     return (
-        <div>
-            <form onSubmit={handleLogin}>
-                <input type="text" value={username} onChange={(e) => setUsername(e.target.value)} placeholder="Username" required />
-                <input type="password" value={password} onChange={(e) => setPassword(e.target.value)} placeholder="Password" required />
-                <button type="submit">Login</button>
+        <div className='login-container'>
+            <form className='login-form' onSubmit={handleLogin}>
+                <p className='centered-text'>
+                    Login to view your saved recipes
+                </p>
+                <input className='login-input' type="text" value={username} onChange={(e) => setUsername(e.target.value)} placeholder="Username" required />
+                <input className='login-input' type="password" value={password} onChange={(e) => setPassword(e.target.value)} placeholder="Password" required />
+                <button className='login-button' type="submit">Login</button>
+                <p className='centered-text'>
+                    Not signed up? <Link to="/register">Click here.</Link> Continue as <Link to="/home">guest</Link>
+                </p>
             </form>
-            <p>
-                Not signed up? <Link to="/register">Click here</Link>
-            </p>
         </div>
 
     );

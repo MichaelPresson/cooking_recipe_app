@@ -23,17 +23,22 @@ export default function SavedRecipes({ user }) {
         fetchRecipes();
     }, [user]);
 
+    if (!user) {
+        return <div className='recomend-container'><p>Login to save recipes</p></div>
+    }
+
     if (loading) {
-        return <div>Loading...</div>;
+        return <div className='recomend-container'>Loading...</div>;
     }
 
     if (error) {
-        return <div>{error}</div>;
+        return <div className='recomend-container'>{error}</div>;
     }
 
     return (
         <div className='recomend-container'>
-            {recipes.map((recipe) => (
+            {Array.isArray(recipes) && recipes.length > 0 ? (
+            recipes.map((recipe) => (
                 <div className='recipe'>
                     <h2>{recipe.title}</h2>
                     <div className='recipe-url'>
@@ -42,7 +47,11 @@ export default function SavedRecipes({ user }) {
                         </a>
                     </div>
                 </div>
-            ))}
+            ))
+        ): ( 
+            <p> Your saved recipes will apear here</p>
+        )}
+
         </div>
     );
 };

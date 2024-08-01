@@ -8,7 +8,7 @@ export default function Home({ user }) {
     const [recipes, setRecipes] = useState([]);
   
     return (
-      <div>
+      <div className='home'>
           <Form setRecipes={setRecipes} />
           <Recomend recipes={recipes} user={ user }/>
       </div>

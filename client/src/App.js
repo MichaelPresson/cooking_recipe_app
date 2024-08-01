@@ -1,6 +1,7 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import { useState } from 'react'
 import './App.css';
+import './styles/Universal.css'
 import Header from './components/Header'
 import Home from './pages/Home'
 import Saved from './pages/Saved'

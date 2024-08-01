@@ -19,15 +19,18 @@ export default function Register() {
     };
 
     return (
-        <div>
-            <form onSubmit={handleRegister}>
-                <input type="text" value={username} onChange={(e) => setUsername(e.target.value)} placeholder="Username" required />
-                <input type="password" value={password} onChange={(e) => setPassword(e.target.value)} placeholder="Password" required />
-                <button type="submit">Register</button>
+        <div className='register-container'>
+            <form className='register-form' onSubmit={handleRegister}>
+                <p className='centered-text'>
+                    Register and enjoy the benefits!
+                </p>
+                <input className='register-input' type="text" value={username} onChange={(e) => setUsername(e.target.value)} placeholder="Username" required />
+                <input className='register-input' type="password" value={password} onChange={(e) => setPassword(e.target.value)} placeholder="Password" required />
+                <button className='register-button' type="submit">Register</button>
+                <p className='centered-text'>
+                    Back to login? <Link to="/login">Click here</Link>
+                </p>
             </form>
-            <p>
-                Back to login? <Link to="/login">Click here</Link>
-            </p>
         </div>
     );
 }
