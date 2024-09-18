@@ -57,7 +57,17 @@
     border: none;
     padding: 14px 20px;
     cursor: pointer;
-}
+    display: inline-flex; /* Use inline-flex for proper alignment */
+    align-items: center; /* Vertically center content */
+  }
+  
+ 
+  .dropbtn img {
+    margin-right: 8px; /* Space between image and text */
+    object-fit: contain;
+    height: 11px;
+    width: 11px;
+  }
 
 .dropbtn:hover {
     background-color: #ddd;

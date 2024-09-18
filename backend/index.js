@@ -11,7 +11,6 @@ const { getRecipesByIngredients, getInstructions } = require('./utils/recipeAPI'
 const IngredientsModel = require('./models/ingredients');
 const Recipe = require('./models/recipe')
 const User = require('./models/user');
-const user = require('./models/user');
 
 // MongoDB connection parameters fetched from environment variables
 const apiKey = process.env.API_KEY;  
@@ -95,7 +94,6 @@ app.post("/getOnlineRecommendations", async (req, res) => {
     try {
         // Calls external API to fetch recipes based on ingredients and API key
         const recipes = await getRecipesByIngredients(ingredients, apiKey);
-        console.log('Fetched recipes:', recipes);  // Logs fetched recipes to console
         res.json(recipes);  // Sends fetched recipes as JSON response
     } catch (error) {
         // Handles errors during recipe fetching process
@@ -107,7 +105,7 @@ app.post("/getOnlineRecommendations", async (req, res) => {
 // GET endpoint to fetch recipe instructions by recipe ID
 app.get("/getRecipeInstructions/:id", async (req, res) => {
     const { id } = req.params;  // Extracts recipe ID from request parameters
-
+    console.log(id)
     try {
         // Calls external API to fetch recipe instructions based on recipe ID and API key
         const instructions = await getInstructions(id, apiKey);
@@ -135,11 +133,11 @@ app.post("/addIngredients", async (req, res) => {
 
 // POST endpoint to add ingredients to database
 app.post('/addRecipe', async (req, res) => {
-    const { savedBy, title, header, url } = req.body;
+    const { recipeId, savedBy, title, image, url } = req.body;
 
     try {
       // Create a new Recipe document
-      const newRecipe = new Recipe({savedBy, title, header, url });
+      const newRecipe = new Recipe({recipeId, savedBy, title, image, url });
       // Save the recipe to MongoDB
       await newRecipe.save();
       // Send the saved recipe back as JSON response
@@ -161,5 +159,28 @@ app.get('/getSavedRecipes', async (req, res) => {
     } catch (error) {
         console.error('Error fetching saved recipes:', error);
         res.status(500).json({ message: 'Failed to fetch saved recipes' });
+    }
+});
+
+//delete endpoint to delete a saved recipe
+app.delete('/deleteRecipe/:id', async (req, res) => {
+    const { id } = req.params;  // Extracts recipe ID from request parameters
+    const { savedBy } = req.body;  // Extracts savedBy from the request body
+
+    try {
+        // Find and delete the recipe by ID and savedBy
+        const result = await Recipe.findOneAndDelete({ recipeId: id, savedBy });
+
+        if (result) {
+            // If recipe is found and deleted, send success response
+            res.status(200).json({ message: 'Recipe deleted successfully' });
+        } else {
+            // If recipe is not found, send not found response
+            res.status(404).json({ message: 'Recipe not found or you do not have permission to delete it' });
+        }
+    } catch (error) {
+        // Handles errors during the deletion process
+        console.error('Error deleting recipe:', error);
+        res.status(500).json({ message: error.message });  // Sends error message as JSON response with status code 500
     }
 });

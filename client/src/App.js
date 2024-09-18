@@ -1,5 +1,6 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
+import axios from 'axios'
 import './App.css';
 import './styles/Universal.css'
 import Header from './components/Header'
@@ -11,8 +12,32 @@ import RegisterPage from './pages/RegisterPage'
 export default function App() {
   const [ login, setLogged ] = useState(false)
   const [ user, setUser ] = useState('')
+  const [ savedRecipes, setSavedRecipes] = useState([])
 
-  
+  useEffect( () => {
+    if(user) {
+      const fetchRecipes = async () => {
+        try {
+          const response = await axios.get(`http://localhost:3001/getSavedRecipes?savedBy=${user}`)
+          setSavedRecipes(response.data)
+        } catch (error) {
+          console.error('Error fetching saved recipes:', error);
+        }
+    };
+
+    fetchRecipes();
+    }
+  },[user])
+
+  const updateSavedRecipes = async () => {
+    try {
+      const response = await axios.get(`http://localhost:3001/getSavedRecipes?savedBy=${user}`);
+      setSavedRecipes(response.data);
+    } catch (error) {
+      console.error('Error updating saved recipes:', error);
+    }
+  };
+
   return (
     <div>
       <BrowserRouter>
@@ -20,7 +45,7 @@ export default function App() {
         <Routes>
             <Route index element={<LoginPage setLogged={ setLogged } setUser={ setUser }/>}/>
             <Route path='/login' element={<LoginPage setLogged={ setLogged } setUser={ setUser }/>}/>
-            <Route path='/home' element={<Home user={ user }/>}/>
+            <Route path='/home' element={<Home user={ user } savedRecipes={ savedRecipes } updateSavedRecipes={ updateSavedRecipes }/>}/>
             <Route path='/saved' element={<Saved user={ user }/>}/>
             <Route path='/Register' element={<RegisterPage/>}/>
         </Routes>

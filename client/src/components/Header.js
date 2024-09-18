@@ -2,6 +2,7 @@ import React, { useState, useEffect, useRef } from 'react';
 import { Link, useLocation, useNavigate} from 'react-router-dom';
 import axios from 'axios'
 import '../styles/Header.css';
+import profile from '../assets/svg-profile.svg'
 
 
 export default function Header({ login, setLogged, setUser, user}) {
@@ -66,8 +67,12 @@ export default function Header({ login, setLogged, setUser, user}) {
       <nav>
         <ul>
           <li className="dropdown" ref={dropdownRef}>
-            <button onClick={handleClick} className="dropbtn">{ buttonText }</button>
-            <button onClick={loginClick} className='dropbtn'>{ loginText }</button>
+            <button onClick={handleClick} className='dropbtn'>{ buttonText }</button>
+            <button onClick={loginClick} className='dropbtn'>
+
+              <img src={profile} alt="profile logo" />
+              { loginText }
+            </button>
             <div className={`dropdown-content ${dropdownOpen ? 'show' : ''}`}>
               <Link to="/login" onClick={handleLogout}>Logout</Link>
             </div>

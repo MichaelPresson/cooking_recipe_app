@@ -9,7 +9,6 @@ export default function SavedRecipes({ user }) {
     useEffect(() => {
         const fetchRecipes = async () => {
             try {
-                
                 const response = await axios.get(`http://localhost:3001/getSavedRecipes?savedBy=${user}`)
                 setRecipes(response.data);
                 setLoading(false);

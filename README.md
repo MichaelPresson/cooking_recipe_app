@@ -1,12 +1,7 @@
-```
-Introduction to Software Engineering - CIS 350
-```
 
 <p align="center">
     <img src="figures/coded_cusisine_logo.png" width="300" title="GVSU LOGO">
 </p>
-
-### Department: Computer Science
 
 ### CodedCuisine: An Ingredient-Based Recipe Finder
 
@@ -41,13 +36,7 @@ CodedCuisine is built on a client-server architecture that enables users to inte
 
 
 
-## 3.1 Database
-CodedCuisine utilizes MongoDB database to query the list of ingredients. Figure 1 shows a list of ingredients queried from the user input.  
 
-<p align="center">
-    <img src="figures/mongoDB.png" width="400" title="USE CASE DIAGRAM">
-</p>
-<p align="center"> Figure 2: MongoDB Ingredients </p>
 
 ## 3.12 Server
 CodedCuisine utilizes React for the user-interface on the client side while Node.js to process the server side. This process the clients request and manages the logic to retrieve the recommended recipes.  
@@ -119,11 +108,4 @@ We were able to utilize the MERN stack effectively and integrated the Spoonacula
 
 ## Future Scope
 Due to time and budget constraints, CodeCuisine in its current form does not have the most efficient performance and availability. Our future plan includes migrating our server from a local hosting to a cloud-based hosting such as Amazon AWS. This will improve our scalability issue and provide consistent runtime. In addition, we plan to integrate and deploy our software on a custom domain, preferably “CodedCuisine.com” to market ourself more competitively.
-
-## Demo
-<p>
-    <a href="https://drive.google.com/file/d/1Xy14rUIoqP_aWw97gUhOVttsr91WT2d0/view?usp=sharing">
-        <img src="demo_gif.gif">
-    Click here for full demonstration.</a>
-</p>
 
